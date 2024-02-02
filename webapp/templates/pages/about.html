@@ -5,50 +5,46 @@
     <meta charset="UTF-8">
     <title>About</title>
     <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static '/css/about.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/about1.css' %}">
     <link rel="icon" type="images/x-icon" href="{% static '/images/logo.png' %}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 {% include 'pages/navbar.html' %}
+<style>
+    .about-centent h3{
+        margin-top: 3rem;
+    }
+    @media only screen and (max-width: 768px) {
+    .about-img
+    {
+        display: none;
+    }
+    .about-centent {
+        width: 100%;
+    }
+
+
+}
+
+</style>
 <body>
 <section class="about">
     <div class="about-img">
-        <img src="{% static '/images/about1.png' %}">
+        <img src="{% static 'images/about1.png' %}" alt="Login Image">
 
     </div>
 
     <div class="about-content">
     <h1 class="heading">ABOUT <span>US</span></h1>
-        <h3>"Empowering Dreams, Connecting Futures: Your IT Hub for Innovation and Growth."</h3>
-    <p>Welcome future IT endeavors! A stepping-stone website for an IT students that
-        chasing their dreams to become an IT professional despite of many struggles
-        in terms of materials, source and other fundamentals that needed in IT industry.
-        Were here to help you in your journey achieving your dreams and guide you to become
-        an IT professional. </p>
-    <a href="#" class="btn">JOIN US<i class='bx bx-right-arrow-alt'></i></a>
+
+        <h3>"Your IT Hub for Innovation and Growth"</h3>
+    <p>This website is your gateway to essential information for aspiring IT professionals. Explore valuable insights into various programming languages, 
+        frameworks, and development tools. Discover expert advice on building a successful career in the ever-evolving field of technology. Stay updated 
+        with the latest trends and best practices to enhance your skills. All information on this website is the property of their respective owners, and I do not claim ownership of any informtion.</p>
         </div>
 
 </section>
 
-
-<section class="about">
-    <div class="about-img">
-        <img src="{% static '/images/about1.png' %}">
-
-    </div>
-
-    <div class="about-content">
-    <h1 class="heading">ABOUT <span>US</span></h1>
-        <h3>"Empowering Dreams, Connecting Futures: Your IT Hub for Innovation and Growth."</h3>
-    <p>Welcome future IT endeavors! A stepping-stone website for an IT students that
-        chasing their dreams to become an IT professional despite of many struggles
-        in terms of materials, source and other fundamentals that needed in IT industry.
-        Were here to help you in your journey achieving your dreams and guide you to become
-        an IT professional. </p>
-    <a href="#" class="btn">JOIN US<i class='bx bx-right-arrow-alt'></i></a>
-        </div>
-
-</section>
 
 {% include 'pages/footer.html' %}
 </body>

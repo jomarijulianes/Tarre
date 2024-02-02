@@ -5,6 +5,7 @@ class Laptop(models.Model):
     images = models.ImageField(upload_to='image/')
     brand = models.CharField(max_length=50, null=True)
     model = models.CharField(max_length=50, blank=True)
+    description = models.TextField(blank=True)
     processor = models.CharField(max_length=50, blank=True)
     ram = models.CharField(max_length=50, blank=True)
     storage = models.CharField(max_length=50, blank=True)
@@ -12,33 +13,10 @@ class Laptop(models.Model):
     price = models.CharField(max_length=50, unique=True, blank=True)
     date_created = models.DateTimeField(default=timezone.now)
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-
-        # Create Classification
-        if self.price and int(self.price) <= 15000:
-            classification_type = 'Budget-Friendly'
-        elif 15000 < int(self.price) <= 30000:
-            classification_type = 'Mid-Range'
-        else:
-            classification_type = 'High-End'
-
-        # Check if a Classification already exists for this Laptop
-        classification, created = Classification.objects.get_or_create(
-            laptop=self,
-            defaults={'classification_type': classification_type}
-        )
-
-        # If Classification already exists, update the classification_type
-        if not created:
-            classification.classification_type = classification_type
-            classification.save()
-
     def __str__(self):
         return self.brand
 
 class Classification(models.Model):
-    laptop = models.OneToOneField(Laptop, on_delete=models.CASCADE, to_field='price')
     classification_type = models.CharField(max_length=50, blank=True)
 
 

@@ -15,7 +15,7 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
-    cursor: pointer; /* Add this to space the links evenly */
+    cursor: pointer;
 }
 
 .custom-navigation ul {
@@ -26,7 +26,7 @@
 }
 
 .custom-navigation ul li {
-    margin-right: 20px; /* Add margin to create space between links */
+    margin-right: 20px; 
 }
 
 .custom-navigation ul li a {
@@ -46,23 +46,32 @@
     .card-for {
         display: flex;
         justify-content: space-around;
-        flex-wrap: wrap; /* Add this to wrap the cards to the next row */
+        flex-wrap: wrap; 
         padding: 2rem;
         cursor: pointer;
         align-items: center;
     }
 
     .card {
+        display: flex;
+        flex-direction: column;
         margin-right: 3rem;
         margin-top: 9rem;
-        width: calc(33.33% - 3rem); /* 33.33% width with margin-right */
+        width: calc(33.33% - 3rem); 
         max-height: 700px;
         font-size: 1.4rem;
-        border-radius: 10px !important;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px; /* Add margin between cards */
+        margin-bottom: 20px;
+    }
+    .card-body {
+        flex-grow: 1; 
+        overflow: hidden; 
     }
 
+    .card-text {
+        margin-bottom: 4px; 
+        font-size: 1.5rem;
+    }
     .image {
         width: 100%;
         height: 300px; 
@@ -84,11 +93,19 @@
         font-weight: 550;
     }
     @media only screen and (max-width: 768px) {
-        /* Adjust styles for smaller screens */
         .card {
-            width: 100%; /* 50% width with margin-right */
-        }
+        width: 100%; /* 100% width without margin-right */
+        margin-right: 0;
+        margin-top: 5rem; /* Adjust top margin for smaller screens */
     }
+    
+    .custom-navigation {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2rem; /* Adjust top margin for smaller screens */
+    }
+}
 
     @media only screen and (max-width: 480px) {
         /* Further adjust styles for even smaller screens */
@@ -136,11 +153,12 @@
                     <p class="card-text">Storage: {{ lap.storage }}</p>
                     <p class="card-text">Graphics: {{ lap.graphics }}</p>
                     <p class="card-text">Price: {{ lap.price }}</p>
-                    <a href="">Read more</a>
+                    <a href="{% url 'view' lap.id %}">Read more</a>
                 </div>
             </div>
         {% endfor %}
     </div>
+    
 
 <!-- Languages Section -->
 <div class="card-for languages justify-content-center align-items-center">
@@ -155,10 +173,9 @@
                 <div class="card-content">
                     <p><i class='bx bxs-calendar'></i>{{ lang.date_created|date:"d F Y" }} / Languages Info</p>
                 </div>
-                <p class="card-text">Language: {{ lang.language }}</p>
-                <p class="card-text">Description: {{ lang.Description }}</p>
-                <p class="card-text">Advantage: {{ lang.advantage }}</p>
-                <p class="card-text">Disadvantage: {{ lang.disadvantage }}</p>
+                <h1>"Exploring {{ lang.language }}"</h1>
+                <p class="card-text">Description: {{ lang.Description|truncatewords:50 }}{% if lang.Description|length > 20 %}... 
+                    <a href="{% url 'view_language' lang.id %}">Read more</a>{% endif %}</p>
             </div>
         </div>
     {% endfor %}
@@ -166,7 +183,7 @@
 </section>
 </div>
 
-
+{% include 'pages/footer.html' %}
 
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script>

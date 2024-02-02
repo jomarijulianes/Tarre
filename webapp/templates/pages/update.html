@@ -95,6 +95,15 @@
                 <input type="text" class="form-control" id="model" placeholder="Enter model" name="model" value="{{ form.model.value }}">
               </div>
             </div>
+
+            <div class="col-xl-6">
+              <div class="form-group">
+                <label for="description" class="text-white">Description:</label>
+                <textarea class="form-control" id="description" placeholder="Enter description" name="description" rows="5" style="width: 100%">{{ form.description.value }}</textarea>
+              </div>
+            </div>
+            
+            
       
             <div class="col-xl-6">
               <div class="form-group">
@@ -133,7 +142,7 @@
             <div class="col-xl-6">
               <div class="form-group">
                 <label for="date_created" class="text-white">Date</label>
-                <input type="datetime" class="form-control" id="price" name="price" value="{{ form.date_created.value }}">
+                <input type="datetime-local" class="form-control" id="date_created" name="date_created" value=" {{ form.date_created.value|date:'Y-m-dTH:i:s' }}" style="width: 100%">
               </div>
             </div>
       

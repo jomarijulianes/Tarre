@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TechBlog</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+    <link rel="icon" type="images/x-icon" href="{% static '/images/logo.png' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<style>
+    .custom-navigation {
+    margin-top: 11rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer; /* Add this to space the links evenly */
+}
+
+.custom-navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.custom-navigation ul li {
+    margin-right: 20px; /* Add margin to create space between links */
+}
+
+.custom-navigation ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+    padding: 2rem;
+    font-weight: 500;
+}
+
+.active-filter {
+    background-color: #04426D;
+    color: white !important;
+    border-radius: 4px;
+}
+
+    .card-for {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap; /* Add this to wrap the cards to the next row */
+        padding: 2rem;
+        cursor: pointer;
+        align-items: center;
+    }
+
+    .card {
+        margin-right: 3rem;
+        margin-top: 9rem;
+        width: calc(33.33% - 3rem); /* 33.33% width with margin-right */
+        max-height: 700px;
+        font-size: 1.4rem;
+        border-radius: 10px !important;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px; /* Add margin between cards */
+    }
+
+    .image {
+        width: 100%;
+        height: 300px; 
+        border-radius: 10px 10px 0 0; 
+        padding: 10px;
+    }
+        .button {
+        text-decoration: none;
+        font-size: 1.6rem;
+        color: white;
+        background-color: black;
+        padding: 1rem 1rem;
+        border-radius: 10px;
+        float: right;
+    }
+    .card-content{
+        margin-bottom: 10px;
+        color: #04426D;
+        font-weight: 550;
+    }
+    .image {
+    margin-top: 6rem;
+    min-height: 60vh;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.details-content{
+    font-size: 1.7rem;
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+.social-icon {
+    font-size: 2.7rem;
+    color: #04426D;
+    margin: 0 7px; /* Adjust margin as needed */
+    transition: color 0.3s; /* Add transition effect for color change */
+}
+
+.social-icon:hover {
+    color: #007BFF; /* Change color on hover */
+}
+
+    @media only screen and (max-width: 768px) {
+        /* Adjust styles for smaller screens */
+        .card {
+            width: 100%; /* 50% width with margin-right */
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        /* Further adjust styles for even smaller screens */
+        .card {
+            width: 100%; /* Full width without margin-right */
+            margin-right: 0;
+        }
+    }
+</style>
+{% include 'pages/navbar.html' %}
+<body>
+
+  <div class="container">
+
+<!-- Laptop Section -->
+<section id="laptop" class="justify-content-center align-items-center">
+    <div class="laptop-details">
+        {% if laptop.images %}
+        <img src="{{ laptop.images.url }}" alt="" class="image">
+        {% else %}
+        <p>No Image Available</p>
+        {% endif %}
+        <h1 class="align-items-center text-center">{{ laptop.brand }} {{ laptop.model }}</h1>
+
+        <div class="details-container">
+            <div class="details-content">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p><i class='bx bxs-calendar'></i>{{ laptop.date_created|date:"d F Y" }} / Laptop Info</p>
+                        <p>{{ laptop.description }}</p>
+                    </div>
+        
+                    <div class="col-md-4">
+                        <h2>Specifications:</h2>
+                        <p>Processor: {{ laptop.processor }}</p>
+                        <p>RAM: {{ laptop.ram }}</p>
+                        <p>Storage: {{ laptop.storage }}</p>
+                        <p>Graphics: {{ laptop.graphics }}</p>
+                        <p>Price: {{ laptop.price }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    <div class="social-icons">
+        <a href="#" class="social-icon"><i class='bx bxl-facebook-circle'></i></a>
+        <a href="#" class="social-icon"><i class='bx bxl-gmail' ></i></a>
+        <a href="#" class="social-icon"><i class='bx bxl-instagram-alt' ></i></a>
+    </div>
+</section>
+</div>
+{% include 'pages/footer.html' %}
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
+

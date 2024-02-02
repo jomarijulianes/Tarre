@@ -3,12 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
+<style>
+    .footer {
+    /* Your existing footer styles */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.social-links {
+    display: flex;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    margin-right: 10px; 
+    color: white;
+}
+
+/* Add media queries for responsiveness */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
 <footer class="footer">
     <div class="text">
         <p>Copyright &copy; 2023 by TECH-CITE | All Rights Reserved.</p>
+    </div>
+
+    <div class="social-links">
+        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <!-- Add more social icons as needed -->
     </div>
 
 

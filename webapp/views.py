@@ -2,7 +2,6 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
 from .models import *
-from .models import Laptop, Classification
 from .forms import UpdateForm, AddForm
 
 def login_view(request):
@@ -105,7 +104,7 @@ def updateLaptop(request, pk):
         form = UpdateForm(request.POST,request.FILES, instance=laptop)
         if form.is_valid():
             form.save()
-            return redirect('techblog')
+            return redirect('crud')
         
     context = {'form':form}
     return render(request, 'pages/update.html', context)
@@ -130,4 +129,17 @@ def addForm(request):
             
     context = {'form':form}
     return render(request, 'pages/create.html',context)
+
+
+def view(request, pk):
+    laptop = Laptop.objects.get(id=pk)
+        
+    context = {'laptop': laptop}
+    return render(request, 'pages/view_laptop.html', context)
+
+def view_language(request, pk):
+    language = Programming_Language.objects.get(id=pk)
+        
+    context = {'language': language}
+    return render(request, 'pages/view_language.html', context)
 
