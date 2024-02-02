@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Laptops</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main1.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/laptop.css' %}">
+    <link rel="icon" type="images/x-icon" href="{% static '/images/logo.png' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<style>
+
+body {
+    margin: 0;
+    padding: 0;
+    margin-top: 100px;
+}
+
+.crud {
+    margin-top: 10rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid black;
+}
+
+thead {
+    background-color: black;
+    color: #DADDDF;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    font-size: 1.5rem;
+}
+
+tr:nth-child(even) {
+    background-color: #0000;
+}
+</style>
+
+</head>
+{% include 'pages/navbar.html' %}
+<body>
+
+    
+<section class="crud">
+
+  <h1>Laptop</h1>
+  <p>Brand: {{ lap.id }}</p>
+  <p>Brand: {{ lap.brand }}</p>
+  <p>Model: {{ lap.model }}</p>
+</section>
+<script>
+      $(document).ready(function () {
+         $("#laptopdatatable").DataTable();
+      });
+</script>
+{% include 'pages/footer.html' %}
+</body>
+</html>

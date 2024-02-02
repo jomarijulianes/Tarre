@@ -1,0 +1,75 @@
+/* home.css */
+
+/* General styling for the home section */
+.home {
+    padding: 60px 0; /* Adjust padding as needed */
+    text-align: center;
+    background-color: #15658B; /* Set the background color */
+}
+
+/* Styling for the content within the home section */
+.home .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home .content {
+    flex: 1;
+    max-width: 600px; /* Set the maximum width */
+}
+
+.home h1 {
+    color: #333; /* Set the text color */
+}
+
+.home h3 {
+    color: #555; /* Set the text color */
+}
+
+.home p {
+    color: #777; /* Set the text color */
+}
+
+/* Styling for the image within the home section */
+.home .image img {
+    width: 100%; /* Make the image responsive */
+}
+
+/* Styling for the work section */
+.work {
+    padding: 60px 0; /* Adjust padding as needed */
+    text-align: center;
+    background-color: #fff; /* Set the background color */
+}
+
+.work .heading {
+    color: #333; /* Set the text color */
+}
+
+.work .title {
+    color: #555; /* Set the text color */
+}
+
+.work .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.work .about-image img {
+    width: 100%; /* Make the image responsive */
+}
+
+.work .content {
+    flex: 1;
+    max-width: 600px; /* Set the maximum width */
+}
+
+.work h3 {
+    color: #333; /* Set the text color */
+}
+
+.work p {
+    color: #777; /* Set the text color */
+}

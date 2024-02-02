@@ -1,0 +1,33 @@
+.about {
+    margin: 20px;
+    background-color: #15658B;
+    color: #fff;
+}
+
+.about .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+.about .heading{
+text-align: center;
+}
+.about .title{
+text-align: center;
+}
+.about h1, .about h3, .about p {
+    margin: 0;
+    text-align: center;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 400px;
+}
+
+.about .content {
+    flex: 2;
+    max-width: 600px;
+}
+

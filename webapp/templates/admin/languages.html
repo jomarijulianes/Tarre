@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Laptops</title>
+        <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/laptop.css' %}">
+    <link rel="icon" type="images/x-icon" href="{% static '/images/logo.png' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+
+        body {
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            margin-top: 100px;
+        }
+        
+        .crud {
+            margin-top: 10rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: 1px solid black;
+        }
+        
+        thead {
+            background-color: black;
+            color: #DADDDF;
+        }
+        
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            font-size: 1.5rem;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #0000;
+        }
+        </style>
+</head>
+{% include 'pages/navbar.html' %}
+<body>
+<section class="crud">
+    <table>
+                    <thead class="btn-cancel">
+                        <tr class="text-center">
+                            <th>ID</th>
+                            <th>Language</th>
+                            <th>Description</th>
+                            <th>advantage</th>
+                            <th>disadvantage</th>
+                            <th>Date created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                {% for lang in languages %}
+                                <tr class="text-center">
+                                    <td>{{ lang.id }}</td>
+                                    <td>{{ lang.language }}</td>
+                                   <td>{{ lang.Description }}</td>
+                                    <td>{{ lang.advantage }}</td>
+                                    <td>{{ lang.disadvantage }}</td>
+                                    <td>{{ lang.date_created }}</td>
+                                </tr>
+                    {% endfor %}
+                    </tbody>
+    </table>
+
+</section>
+{% include 'pages/footer.html' %}
+</body>
+</html>

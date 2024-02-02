@@ -1,0 +1,7 @@
+<!-- admin_registration.html -->
+<h2>Register</h2>
+<form method="post" action="{% url 'admin_registration' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+</form>

@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Laptops</title>
+        <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/laptop.css' %}">
+    <link rel="icon" type="images/x-icon" href="{% static '/images/logo.png' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+
+        body {
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            margin-top: 100px;
+        }
+        
+        .crud {
+            margin-top: 10rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: 1px solid black;
+        }
+        
+        thead {
+            background-color: black;
+            color: #DADDDF;
+        }
+        
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            font-size: 1.5rem;
+            border-bottom: 1px solid black;
+        }
+        tr {
+        border-bottom: 1px solid #ddd; /* Border on all tr elements */
+    }
+        tr:nth-child(even) {
+            background-color: #0000;
+        }
+        </style>   
+</head>
+{% include 'pages/navbar.html' %}
+<body>
+<section class="crud">
+    <table>
+                    <thead class="btn-cancel">
+                        <tr class="text-center">
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th><Var></Var>ersion</th>
+                            <th>Date created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                {% for frame in framework %}
+                                <tr class="text-center">
+                                    <td>{{ frame.id }}</td>
+                                    <td>{{ frame.name }}</td>
+                                   <td>{{ frame.description }}</td>
+                                    <td>{{ frame.version }}</td>
+                                    <td>{{ frame.release_date }}</td>
+
+                                </tr>
+                    {% endfor %}
+                    </tbody>
+    </table>
+
+</section>
+{% include 'pages/footer.html' %}
+</body>
+</html>

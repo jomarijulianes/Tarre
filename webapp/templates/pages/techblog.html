@@ -1,0 +1,195 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TechBlog</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+    <link rel="icon" type="images/x-icon" href="{% static '/images/logo.png' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<style>
+    .custom-navigation {
+    margin-top: 11rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer; /* Add this to space the links evenly */
+}
+
+.custom-navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.custom-navigation ul li {
+    margin-right: 20px; /* Add margin to create space between links */
+}
+
+.custom-navigation ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+    padding: 2rem;
+    font-weight: 500;
+}
+
+.active-filter {
+    background-color: #04426D;
+    color: white !important;
+    border-radius: 4px;
+}
+
+    .card-for {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap; /* Add this to wrap the cards to the next row */
+        padding: 2rem;
+        cursor: pointer;
+        align-items: center;
+    }
+
+    .card {
+        margin-right: 3rem;
+        margin-top: 9rem;
+        width: calc(33.33% - 3rem); /* 33.33% width with margin-right */
+        max-height: 700px;
+        font-size: 1.4rem;
+        border-radius: 10px !important;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px; /* Add margin between cards */
+    }
+
+    .image {
+        width: 100%;
+        height: 300px; 
+        border-radius: 10px 10px 0 0; 
+        padding: 10px;
+    }
+        .button {
+        text-decoration: none;
+        font-size: 1.6rem;
+        color: white;
+        background-color: black;
+        padding: 1rem 1rem;
+        border-radius: 10px;
+        float: right;
+    }
+    .card-content{
+        margin-bottom: 10px;
+        color: #04426D;
+        font-weight: 550;
+    }
+    @media only screen and (max-width: 768px) {
+        /* Adjust styles for smaller screens */
+        .card {
+            width: 100%; /* 50% width with margin-right */
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        /* Further adjust styles for even smaller screens */
+        .card {
+            width: 100%; /* Full width without margin-right */
+            margin-right: 0;
+        }
+    }
+</style>
+{% include 'pages/navbar.html' %}
+<body>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <nav class="custom-navigation">
+        <ul>
+            <li><a class="filter-item active-filter" data-filter="all">All</a></li>
+            <li><a class="filter-item" data-filter="laptop">Laptops</a></li>
+            <li><a class="filter-item" data-filter="languages">Programming Languages</a></li>
+            <li><a class="filter-item" data-filter="frontend">Frontend Stacks</a></li>
+            <li><a class="filter-item" data-filter="framework">Frameworks</a></li>
+            <li><a class="filter-item" data-filter="ide">IDE</a></li>
+            <!-- Add more links for other categories -->
+        </ul>
+        <a href="{% url 'addForm' %}" class="button"><i class='bx bx-plus-medical'></i> Create</a>
+    </nav>
+
+<!-- Laptop Section -->
+<section id="laptop" class="justify-content-center align-items-center">
+    <div class="card-for laptop">
+        {% for lap in laptop %}
+            <div class="card">
+                {% if lap.images %}
+                <img src="{{ lap.images.url }}" alt="" class="image card-img-top">
+                {% else %}
+                <p>No Image Available</p>
+                {% endif %}
+                <div class="card-body">
+                    <div class="card-content">
+                        <p><i class='bx bxs-calendar'></i>{{ lap.date_created|date:"d F Y" }} / Laptop Info</p>
+                    </div>
+                    <h2 class="card-title"> "Let's know more about {{ lap.brand }} {{ lap.model }}"</h2>
+                    <p class="card-text">Processor: {{ lap.processor }}</p>
+                    <p class="card-text">RAM: {{ lap.ram }}</p>
+                    <p class="card-text">Storage: {{ lap.storage }}</p>
+                    <p class="card-text">Graphics: {{ lap.graphics }}</p>
+                    <p class="card-text">Price: {{ lap.price }}</p>
+                    <a href="">Read more</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+<!-- Languages Section -->
+<div class="card-for languages justify-content-center align-items-center">
+    {% for lang in language %}
+        <div class="card">
+            {% if lang.images %}
+                <img src="{{ lang.images.url }}" alt="" class="image card-img-top">
+                {% else %}
+                <p>No Image Available</p>
+                {% endif %}
+            <div class="card-body">
+                <div class="card-content">
+                    <p><i class='bx bxs-calendar'></i>{{ lang.date_created|date:"d F Y" }} / Languages Info</p>
+                </div>
+                <p class="card-text">Language: {{ lang.language }}</p>
+                <p class="card-text">Description: {{ lang.Description }}</p>
+                <p class="card-text">Advantage: {{ lang.advantage }}</p>
+                <p class="card-text">Disadvantage: {{ lang.disadvantage }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+</section>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+    $(".filter-item").click(function(){
+        const value = $(this).attr("data-filter");
+
+        // Remove active-filter class from all filter items
+        $(".filter-item").removeClass("active-filter");
+
+        if (value == 'all') {
+            $(".card-for").show("1000");
+        } else {
+            $(".card-for").not("." + value).hide("1000");
+            $(".card-for").filter('.' + value).show("1000");
+        }
+
+        // Add active-filter class to the clicked filter item
+        $(this).addClass("active-filter");
+    });
+});
+</script>
+
+</body>
+</html>
+

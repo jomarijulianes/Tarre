@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Laptops</title>
+        <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+        <link rel="icon" type="images/x-icon" href="{% static '/images/logo.png' %}">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- ... your existing head content ... -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.8/css/jquery.dataTables.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.8/js/jquery.dataTables.min.js"></script>
+    
+<style>
+.crud {
+    margin-top: 10rem;
+}
+.table-title{
+    background-color: black;
+    color: white;
+    height: 70px;
+}
+.table-title h2{
+    margin-top: 20px;
+}
+.create {
+    margin-top: 10px;
+    margin-right: 20px;
+    padding: 10px 20px;
+    background-color: green; /* Use a formal color */
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    float: right;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid black;
+}
+
+thead {
+    background-color: black;
+    color: #DADDDF;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    font-size: 1.5rem;
+}
+
+tr:nth-child(even) {
+    background-color: #0000;
+}
+.custom-btn-group {
+    display: flex;
+    gap: 10px; /* Adjust the gap as needed */
+}
+
+.custom-btn {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    color: white !important;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+span{
+    color: white;
+}
+
+.custom-btn:hover {
+    background-color: #333; /* Darker shade on hover */
+}
+</style>
+
+</head>
+
+<body>
+	<div class="body">
+        {% include 'pages/sidebar.html' %}
+<section class="crud">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card text-center text-black mb-3" id="total-delivered-user">
+                <div class="card-header">
+                    <h5 class="card-title">User</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{ total_user }}</h3>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-md-6">
+            <div class="card text-center text-black mb-3" id="total-delivered-laptop">
+                <div class="card-header">
+                    <h5 class="card-title">Total IDE's</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{ total_ide }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-xl">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>IDE (Integrated Development Environment)</h2>
+                        </div>
+                            <div class="col-md-6">
+                                <a href="{% url 'addForm' %}" class="create"><i class='bx bxs-add-to-queue'></i> Create</a>
+                            </div>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <thead class="btn-cancel">
+                        <tr class="text-center">
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>IDE</th>
+                            <th>Languages</th>
+                            <th>Description</th>
+                            <th>Features</th>
+                            <th>Date</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ide in ide %}
+                                <tr class="text-center">
+                                    <td>{{ ide.id }}</td>
+                                    <td>
+                                        {% if ide.images %}
+                                            <img src="{{ ide.images.url }}" alt="Language Image" width="50" height="50">
+                                        {% else %}
+                                            No Image Available
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ ide.IDE }}</td>
+                                    <td>{{ ide.Languages }}</td>
+                                    <td>{{ ide.Description }}</td>
+                                    <td>{{ ide.Features }}</td>
+                                    <td>{{ ide.date_created }}</td>
+                                    <td class="custom-btn-group">
+                                        <a class="custom-btn custom-btn-success" href="">
+                                            <i class='bx bx-show'></i>
+                                            <span>View</span>
+                                        </a>
+                                    
+                                        <a class="custom-btn custom-btn-info" href="">
+                                            <i class='bx bxs-edit'></i>
+                                            <span>Edit</span>
+                                        </a>
+                                    
+                                        <a class="custom-btn custom-btn-danger" href="">
+                                            <i class='bx bx-trash'></i>
+                                            <span>Delete</span>
+                                        </a>
+                                    </td>
+                                    
+                                </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.8/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.8/js/dataTables.bootstrap5.min.js"></script>
+
+{% include 'pages/footer.html' %}
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Laptops</title>
+        <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/laptop.css' %}">
+    <link rel="icon" type="images/x-icon" href="{% static '/images/logo.png' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+{% include 'pages/navbar.html' %}
+<body>
+<section class="crud">
+    <table>
+ <thead class="btn-cancel">
+                        <tr class="text-center">
+                            <th>ID</th>
+                            <th>IDE</th>
+                            <th>Languages</th>
+                            <th>Description</th>
+                            <th>Features</th>
+                            <th>Date Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                {% for ide in ide %}
+                                <tr class="text-center">
+                                    <td>{{ ide.id }}</td>
+                                    <td>{{ ide.IDE }}</td>
+                                   <td>{{ ide.Languages }}</td>
+                                    <td>{{ ide.Description }}</td>
+                                    <td>{{ ide.Features }}</td>
+                                    <td>{{ ide.date_created }}</td>
+
+                                </tr>
+                    {% endfor %}
+                    </tbody>
+    </table>
+
+</section>
+{% include 'pages/footer.html' %}
+</body>
+</html>

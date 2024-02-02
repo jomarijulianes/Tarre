@@ -1,0 +1,81 @@
+{% extends 'pages/index.html'%}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<style>
+    .it{
+   min-height: auto;
+   background: whitesmoke;
+   padding: 3rem;
+   padding-bottom: 7rem;
+   align-items: center;
+   text-align: center;
+}
+
+.it-container .it-box{
+   flex: 1 1 30rem;
+   background: white;
+   padding: 3rem 2rem 4rem;
+   border-radius: 1.5rem;
+   box-shadow: 0 .2rem .6rem rgba(0, 0, 0, 0.2);
+   text-align: center;
+   border-top: .5rem solid #000;
+   border-bottom: .5rem solid #000;
+   gap: 2rem;
+   cursor: pointer;
+}
+</style>
+<body>
+
+<section class="home" id="home">
+    <div class="content">
+    <h1>TECH-CITE</h1>
+        <h3>"Empowering Dreams, Connecting Futures: Your IT Hub for Innovation and Growth."</h3>
+    <p>Welcome future IT endeavors! A stepping-stone website for an IT students that
+        chasing their dreams to become an IT professional despite of many struggles
+        in terms of materials, source and other fundamentals that needed in IT industry.
+        Were here to help you in your journey achieving your dreams and guide you to become
+        an IT professional. </p>
+    <a href="#" class="btnn">JOIN US<i class='bx bx-right-arrow-alt'></i></a>
+
+        </div>
+
+    <div class="home-box"></div>
+</section>
+
+
+<section class="it">
+    <h1 class="heading">WHY <span> CHOOSE </span>IT ?</h1>
+    <p>IT plays a crucial role in improving various aspects of daily life, from healthcare and education to communication and entertainment. <br> Working in IT allows individuals to contribute to positive societal changes through technological advancements.</p>
+        <div class="it-container">
+            <div class="it-box">
+            <i class='bx bxs-bar-chart-alt-2'></i>
+            <h3>High Demand</h3>
+            <p>IT skills are in constant demand across various industries. As businesses continue to digitize and rely on technology,
+                there is a growing need for professionals who can develop, maintain, and secure these technological solutions.</p>
+            <a href="" class="btnn">Read More</a>
+            </div>
+             <div class="it-box">
+            <i class='bx bxs-network-chart'></i>
+            <h3>Job Security</h3>
+            <p>As technology becomes increasingly integral to business operations, IT professionals enjoy a degree of job security. Organizations depend on IT experts to keep their systems running smoothly and securely.</p>
+            <a href="" class="btnn">Read More</a>
+            </div>
+             <div class="it-box">
+            <i class='bx bxs-wallet'></i>
+            <h3>Competitive Salaries</h3>
+            <p>The IT industry is known for offering competitive salaries, driven by the high demand for skilled professionals. This demand provides financial rewards but also opens doors to career growth and advancement opportunities.</p>
+            <a href="" class="btnn">Read More</a>
+            </div>
+    </div>
+</section>
+
+</body>
+</html>
+{% endblock %}

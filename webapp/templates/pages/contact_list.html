@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Laptops</title>
+        <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/laptop.css' %}">
+    <link rel="icon" type="images/x-icon" href="{% static '/images/logo.png' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<style>body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    margin-top: 100px;
+}
+
+.crud {
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: black;
+    color:  #DADDDF;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #0000;
+}
+
+td:hover {
+    background-color: grey;
+}
+</style>
+</head>
+{% include 'pages/navbar.html' %}
+<body>
+<section class="crud">
+    <table>
+ <thead class="btn-cancel">
+                        <tr class="text-center">
+                            <th>ID</th>
+                            <th>fullname</th>
+                            <th>email</th>
+                            <th>mobile</th>
+                            <th>message</th>
+                            <th>Date Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                {% for cont in contact_list %}
+                                <tr class="text-center">
+                                    <td>{{ cont.id }}</td>
+                                    <td>{{ cont.fullname }}</td>
+                                   <td>{{ cont.email }}</td>
+                                    <td>{{ cont.mobile }}</td>
+                                    <td>{{ cont.message }}</td>
+                                    <td>{{ cont.release_date }}</td>
+
+
+                                </tr>
+                    {% endfor %}
+                    </tbody>
+    </table>
+
+</section>
+{% include 'pages/footer.html' %}
+</body>
+</html>
